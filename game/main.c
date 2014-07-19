@@ -107,9 +107,22 @@ int main(void)
     debounce_init();
 
     BSP_LCD_Init();
-    //BSP_LCD_LayerDefaultInit(uint16_t LayerIndex, uint32_t FB_Address)
-    //BSP_LCD_SelectLayer(uint32_t LayerIndex)
+    BSP_LCD_LayerDefaultInit(0, (uint32_t) LCD_FRAME_BUFFER);
+    BSP_LCD_SetLayerVisible(0, ENABLE);
+
+    BSP_LCD_SelectLayer(0);
+    BSP_LCD_Clear(LCD_COLOR_RED);
+
+    BSP_LCD_SetBackColor(LCD_COLOR_RED);
+    BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
+
+    BSP_LCD_DisplayStringAtLine(2, (uint8_t *) "Hello World!");
+
     BSP_LCD_DisplayOn();
+
+    //BSP_LCD_LayerDefaultInit(1, (uint32_t) LCD_FRAME_BUFFER+76800);
+    //BSP_LCD_SelectLayer(1);
+    //BSP_LCD_SetLayerVisible(1, DISABLE);
 
     game_loop();
     return 0;
