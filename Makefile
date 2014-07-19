@@ -15,6 +15,7 @@ OUTPUT = tetris_stm32f4
 HAL_DIR = ./hal/src
 SRC += $(HAL_DIR)/stm32f4xx_hal.c \
        $(HAL_DIR)/stm32f4xx_hal_rcc.c \
+       $(HAL_DIR)/stm32f4xx_hal_pwr_ex.c \
        $(HAL_DIR)/stm32f4xx_hal_cortex.c \
        $(HAL_DIR)/stm32f4xx_hal_gpio.c \
 
@@ -22,6 +23,9 @@ SRC += $(HAL_DIR)/stm32f4xx_hal.c \
 GAME_DIR = ./game
 SRC += $(GAME_DIR)/main.c \
        $(GAME_DIR)/system_stm32f4xx.c \
+       $(GAME_DIR)/stm32f4xx_it.c \
+       $(GAME_DIR)/gpio.c \
+       $(GAME_DIR)/debounce.c \
 
 OBJ = $(patsubst %.c, %.o, $(SRC))
 OBJ += $(GAME_DIR)/start.o

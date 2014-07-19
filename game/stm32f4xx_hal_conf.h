@@ -72,7 +72,7 @@
 /* #define HAL_I2S_MODULE_ENABLED      */  
 /* #define HAL_IWDG_MODULE_ENABLED     */ 
 /* #define HAL_LTDC_MODULE_ENABLED     */ 
-/* #define HAL_PWR_MODULE_ENABLED      */ 
+#define HAL_PWR_MODULE_ENABLED
 #define HAL_RCC_MODULE_ENABLED
 /* #define HAL_RNG_MODULE_ENABLED      */   
 /* #define HAL_RTC_MODULE_ENABLED      */
