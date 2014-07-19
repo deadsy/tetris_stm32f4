@@ -15,9 +15,24 @@ OUTPUT = tetris_stm32f4
 HAL_DIR = ./hal/src
 SRC += $(HAL_DIR)/stm32f4xx_hal.c \
        $(HAL_DIR)/stm32f4xx_hal_rcc.c \
+       $(HAL_DIR)/stm32f4xx_hal_rcc_ex.c \
        $(HAL_DIR)/stm32f4xx_hal_pwr_ex.c \
        $(HAL_DIR)/stm32f4xx_hal_cortex.c \
        $(HAL_DIR)/stm32f4xx_hal_gpio.c \
+       $(HAL_DIR)/stm32f4xx_hal_dma.c \
+       $(HAL_DIR)/stm32f4xx_hal_dma2d.c \
+       $(HAL_DIR)/stm32f4xx_hal_ltdc.c \
+       $(HAL_DIR)/stm32f4xx_hal_sdram.c \
+       $(HAL_DIR)/stm32f4xx_hal_i2c.c \
+       $(HAL_DIR)/stm32f4xx_hal_spi.c \
+       $(HAL_DIR)/stm32f4xx_ll_fmc.c \
+
+# bsp sources
+BSP_DIR = ./bsp/STM32F429I-Discovery
+SRC += $(BSP_DIR)/stm32f429i_discovery.c \
+       $(BSP_DIR)/stm32f429i_discovery_lcd.c \
+       $(BSP_DIR)/stm32f429i_discovery_sdram.c \
+       $(BSP_DIR)/../Components/ili9341/ili9341.c \
 
 # game sources
 GAME_DIR = ./game
@@ -33,7 +48,9 @@ OBJ += $(GAME_DIR)/start.o
 # include files
 INC = .
 INC += ./cmsis
+INC += ./fonts
 INC += ./hal/inc
+INC += $(BSP_DIR)
 INC += $(GAME_DIR)
 
 INCLUDE = $(addprefix -I,$(INC))

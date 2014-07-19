@@ -9,6 +9,8 @@
 #include "stm32f4xx_hal.h"
 #include "gpio.h"
 #include "debounce.h"
+#include "stm32f429i_discovery_lcd.h"
+
 //#include "timers.h"
 //#include "stm32f4_regs.h"
 
@@ -103,6 +105,12 @@ int main(void)
     gpio_init();
     //timers_init();
     debounce_init();
+
+    BSP_LCD_Init();
+    //BSP_LCD_LayerDefaultInit(uint16_t LayerIndex, uint32_t FB_Address)
+    //BSP_LCD_SelectLayer(uint32_t LayerIndex)
+    BSP_LCD_DisplayOn();
+
     game_loop();
     return 0;
 }

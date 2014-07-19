@@ -6,77 +6,77 @@ GPIO Control for the STM32F4 Discovery Board
 Pin Assignments for STM32F429I Discovery Board
 
 PA0 = push button
-PA1 = system_reset
-PA2 =
+PA1 = mems_int1
+PA2 = mems_int2
 PA3 =
-PA4 = codec
-PA5 = accel
-PA6 = accel
-PA7 = accel
-PA8
-PA9 = usb
-PA10 = usb
-PA11 = usb (not on header)
-PA12 = usb (not on header)
-PA13 = swd
-PA14 = swd
-PA15 =
+PA4 = video
+PA5 =
+PA6 =
+PA7 = acp
+PA8 = acp i2c
+PA9 =
+PA10 =
+PA11 =
+PA12 =
+PA13 =
+PA14 =
+PA15 = acp
 
 PB0
 PB1
 PB2
-PB3 = swd
+PB3 =
 PB4
 PB5
-PB6 = codec
+PB6 =
 PB7 =
 PB8
-PB9 = codec
-PB10 = mic
+PB9 =
+PB10 =
 PB11
-PB12
-PB13
-PB14
-PB15
+PB12 = usb
+PB13 = usb
+PB14 = usb
+PB15 = usb
 
-PC0 = usb
-PC1
-PC2
-PC3 = mic
-PC4 = codec
-PC5
-PC6
-PC7 = codec
+PC0 =
+PC1 = ncs_mems_spi
+PC2 = video
+PC3 =
+PC4 = usb
+PC5 = usb
+PC6 = video
+PC7 =
 PC8
-PC9
-PC10 = codec
+PC9 = acp i2c
+PC10 =
 PC11
-PC12 = codec
+PC12 =
 PC13
-PC14 = osc_in
-PC15 = osc_out
+PC14 = pc14_osc32_in
+PC15 = pc14_osc32_out
 
 PD0 =
 PD1 =
 PD2 =
 PD3 =
-PD4 = codec
-PD5 = usb
+PD4 =
+PD5 =
 PD6 =
 PD7 =
 PD8 =
 PD9 =
 PD10 =
-PD11 =
-PD12 = led
-PD13 = led
-PD14 = led
-PD15 = led
+PD11 = video
+PD12 = video
+PD13 = video
+PD14 =
+PD15 =
 
-PE0 = accel
-PE1 = accel
-PE2
-PE3 = accel
+PE0 =
+PE1 =
+PE2 =
+PE3 =
 PE4 =
 PE5 =
 PE6 =
@@ -89,6 +89,40 @@ PE12 =
 PE13 =
 PE14 =
 PE15 =
+
+PF0 =
+PF1 =
+PF2 =
+PF3 =
+PF4 =
+PF5 =
+PF6 =
+PF7 = spi5_sck, video
+PF8 = spi5_miso
+PF9 = spi5_mosi, video
+PF10 = video
+PF11 =
+PF12 =
+PF13 =
+PF14 =
+PF15 =
+
+PG0 =
+PG1 =
+PG2 =
+PG3 =
+PG4 =
+PG5 =
+PG6 =
+PG7 = video
+PG8 =
+PG9 =
+PG10 =
+PG11 =
+PG12 =
+PG13 = led
+PG14 = led
+PG15 =
 
 PH0 = ph0_osc_in
 PH1 = ph1_osc_out
