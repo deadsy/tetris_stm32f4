@@ -9,10 +9,7 @@
 #include "stm32f4xx_hal.h"
 #include "gpio.h"
 #include "debounce.h"
-#include "stm32f429i_discovery_lcd.h"
-
-//#include "timers.h"
-//#include "stm32f4_regs.h"
+#include "game.h"
 
 //-----------------------------------------------------------------------------
 
@@ -88,11 +85,37 @@ void debounce_off_handler(uint32_t bits)
 
 //-----------------------------------------------------------------------------
 
+#define UPDATE_TICKS 10
+
 void game_loop(void)
 {
+    gs_t gs;
+    int render_flag = 1;
+    uint32_t prev_ticks;
+    uint32_t update_ticks = 0;
+
+    render_init();
+    update_init(&gs);
+
+    prev_ticks = HAL_GetTick();
+
     while (1) {
-        //gpio_toggle(LED_RED);
-        //HAL_Delay(500);
+        uint32_t now_ticks;
+
+        while (update_ticks >= UPDATE_TICKS) {
+            update(&gs);
+            update_ticks -= UPDATE_TICKS;
+            render_flag = 1;
+        }
+
+        if (render_flag) {
+            render(&gs);
+            render_flag = 0;
+        }
+
+        now_ticks = HAL_GetTick();
+        update_ticks += now_ticks - prev_ticks;
+        prev_ticks = now_ticks;
     }
 }
 
@@ -103,26 +126,7 @@ int main(void)
     HAL_Init();
     SystemClock_Config();
     gpio_init();
-    //timers_init();
     debounce_init();
-
-    BSP_LCD_Init();
-    BSP_LCD_LayerDefaultInit(0, (uint32_t) LCD_FRAME_BUFFER);
-    BSP_LCD_SetLayerVisible(0, ENABLE);
-
-    BSP_LCD_SelectLayer(0);
-    BSP_LCD_Clear(LCD_COLOR_RED);
-
-    BSP_LCD_SetBackColor(LCD_COLOR_RED);
-    BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
-
-    BSP_LCD_DisplayStringAtLine(2, (uint8_t *) "Hello World!");
-
-    BSP_LCD_DisplayOn();
-
-    //BSP_LCD_LayerDefaultInit(1, (uint32_t) LCD_FRAME_BUFFER+76800);
-    //BSP_LCD_SelectLayer(1);
-    //BSP_LCD_SetLayerVisible(1, DISABLE);
 
     game_loop();
     return 0;

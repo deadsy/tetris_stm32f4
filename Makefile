@@ -41,6 +41,8 @@ SRC += $(GAME_DIR)/main.c \
        $(GAME_DIR)/stm32f4xx_it.c \
        $(GAME_DIR)/gpio.c \
        $(GAME_DIR)/debounce.c \
+       $(GAME_DIR)/render.c \
+       $(GAME_DIR)/update.c \
 
 OBJ = $(patsubst %.c, %.o, $(SRC))
 OBJ += $(GAME_DIR)/start.o
